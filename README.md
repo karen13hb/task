@@ -25,6 +25,23 @@ La aplicación utiliza Angular Router para navegar entre la lista de tareas y el
 
 - **Interfaz Moderna:**  
   Utiliza Tailwind CSS para un diseño atractivo y responsive, con un sidebar persistente y tarjetas (task cards) para cada tarea.
+
+### Arquitectura Utilizada
+
+Esta aplicación adopta una arquitectura modular y basada en **componentes standalone**, lo que ofrece varias ventajas:
+
+- **Componentes Standalone:**  
+  Permiten eliminar la necesidad de un NgModule raíz, simplificando la configuración y facilitando la reutilización, pruebas y mantenimiento de cada componente de forma independiente.
+
+- **Separación de Responsabilidades:**  
+  La lógica de negocio se centraliza en servicios (por ejemplo, `TaskService`), mientras que la presentación se maneja en componentes específicos ( `TasksListComponent`, `TaskFormComponent` y `TaskCardComponent`). Esto resulta en un código más limpio, organizado y escalable.
+
+- **Enrutamiento Centralizado:**  
+  La configuración de rutas en un archivo independiente (`app.routes.ts`) facilita la navegación entre vistas, manteniendo el código modular y fácil de extender a medida que crece la aplicación.
+
+- **Preparado para SSR y Hidratación:**  
+  La arquitectura permite soportar Angular Universal (SSR) y maneja la hidratación del lado del cliente, lo que mejora el rendimiento y la optimización para motores de búsqueda.
+
   
 ## Instalación
 
