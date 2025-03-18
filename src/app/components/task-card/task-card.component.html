@@ -1,0 +1,50 @@
+<div class="p-4 w-80 md:w-80 bg-white shadow-md rounded-xl">
+
+  <div class="flex items-center justify-between space-x-4">
+    <div>
+
+      <p class="text-xl font-bold text-gray-800">
+        {{ task.title }}
+      </p>
+    </div>
+    <div class="mt-2 inline-block px-2 py-1 text-sm font-medium rounded-full"
+    [ngClass]="task.completed ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'">
+    {{ task.completed ? 'Completada' : 'Pendiente' }}
+    </div>
+  
+  </div>
+
+  <hr class="mt-2 border-t border-gray-200">
+
+
+  <p class="mt-2 text-gray-600">
+    {{ task.description }}
+  </p>
+  <p class="mt-2 text-sm text-gray-400" *ngIf="task.assignedTo">
+    Asignada a: <span class="text-gray-600 font-medium">{{ task.assignedTo }}</span>
+  </p>
+  <p class="text-sm text-gray-400" *ngIf="task.dueDate">
+    Fecha: <span class="text-gray-600 font-medium">{{ task.dueDate | date:'shortDate' }}</span>
+  </p>
+
+  <div class="flex gap-2 mt-4 flex-col sm:flex-row sm:justify-start justify-center">
+    <button
+      (click)="onToggle()"
+      class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition"
+    >
+      {{ task.completed ? 'Revertir' : 'Completar' }}
+    </button>
+    <button
+      (click)="onDelete()"
+      class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition"
+    >
+      Eliminar
+    </button>
+    <a
+      [routerLink]="['/edit-task', task.id]"
+      class="px-3 py-1 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition text text-center"
+    >
+      Editar
+    </a>
+  </div>
+</div>

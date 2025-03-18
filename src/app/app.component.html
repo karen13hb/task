@@ -1,0 +1,21 @@
+<div class="flex flex-col md:flex-row h-screen p-6 main-screen gap-6">
+  <aside class="w-full md:w-64 rounded-lg flex flex-col bg-gray-800 text-white">
+    <div class="p-4 text-xl font-bold title-b">
+      Gestor de tareas
+    </div>
+    <nav class="flex-1 p-4 space-y-2">
+      <a [routerLink]="['/tasks']" routerLinkActive="active" class="flex items-center py-2 px-3 rounded-md transition-colors hover:bg-gray-700">
+        <i class="fa fa-list text-lg text-blue-400 mr-2 transition-colors hover:text-blue-200"></i>
+        Lista de Tareas
+      </a>
+      <a [routerLink]="['/new-task']" routerLinkActive="active" class="flex items-center py-2 px-3 rounded-md transition-colors hover:bg-gray-700">
+        <i class="fa fa-plus text-lg text-green-400 mr-2 transition-colors hover:text-green-200"></i>
+        Nueva Tarea
+      </a>
+    </nav>
+  </aside>
+  
+  <main class="flex-1 rounded-lg main-cont overflow-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>

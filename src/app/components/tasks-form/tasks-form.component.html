@@ -1,0 +1,91 @@
+
+  <div class="w-full mt-6 mb-6 max-w-md mx-auto bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden">
+    <div class="p-6">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-white text-center">
+        {{ isEdit ? 'Editar Tarea' : 'Nueva Tarea' }}
+      </h2>
+      <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1">Título</label>
+          <input
+            type="text"
+            formControlName="title"
+            required
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div
+            *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+            class="text-red-500 text-sm mt-1"
+          >
+            El título es requerido.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1">Descripción</label>
+          <textarea
+            formControlName="description"
+            required
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+          <div
+            *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched"
+            class="text-red-500 text-sm mt-1"
+          >
+            La descripción es requerida.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1">Estado</label>
+          <select
+            formControlName="completed"
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option [value]="false">Pendiente</option>
+            <option [value]="true">Completado</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1">Asignar a</label>
+          <input
+            type="text"
+            formControlName="assignedTo"
+            required
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div
+            *ngIf="taskForm.get('assignedTo')?.invalid && taskForm.get('assignedTo')?.touched"
+            class="text-red-500 text-sm mt-1"
+          >
+            Debes asignar la tarea a alguien.
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="block text-gray-700 dark:text-gray-300 mb-1">Fecha</label>
+          <input
+            type="date"
+            formControlName="dueDate"
+            required
+            class="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+          <div
+            *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched"
+            class="text-red-500 text-sm mt-1"
+          >
+            La fecha es requerida.
+          </div>
+        </div>
+
+
+        <button
+        type="submit"
+        class="w-full py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-colors hover:opacity-90 cursor-pointer"
+      >
+        {{ isEdit ? 'Actualizar Tarea' : 'Agregar Tarea' }}
+      </button>
+      </form>
+    </div>
+  </div>
+

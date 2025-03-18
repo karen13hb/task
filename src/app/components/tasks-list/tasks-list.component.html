@@ -1,0 +1,38 @@
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4">Lista de Tareas</h2>
+  
+
+  <div class="flex justify-end space-x-2 mb-4">
+    <button 
+      (click)="setFilter('all')"
+      [ngClass]="filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'"
+      class="px-3 py-1 rounded transition-colors">
+      Todas
+    </button>
+    <button 
+      (click)="setFilter('completed')"
+      [ngClass]="filter === 'completed' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'"
+      class="px-3 py-1 rounded transition-colors">
+      Completadas
+    </button>
+    <button 
+      (click)="setFilter('pending')"
+      [ngClass]="filter === 'pending' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'"
+      class="px-3 py-1 rounded transition-colors">
+      Pendientes
+    </button>
+  </div>
+
+  <div *ngIf="filteredTasks.length === 0" class="text-gray-600">
+    No hay tareas.
+  </div>
+
+  <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+    <app-task-card 
+      *ngFor="let task of filteredTasks" 
+      [task]="task" 
+      (toggle)="toggleCompletion(task)" 
+      (delete)="deleteTask(task)">
+    </app-task-card>
+  </div>
+  
