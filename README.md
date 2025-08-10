@@ -1,31 +1,65 @@
-# Tasks
+# Gestor de Tareas Angular con Tailwind CSS
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Esta aplicación es un gestor de tareas sencillo desarrollado con Angular 19 (utilizando componentes standalone) y Tailwind CSS. Permite:
 
-## Development server
+Visualizar una lista de tareas.
 
-To start a local development server, run:
+Agregar nuevas tareas (con título, descripción y estado pendiente/completado).
 
+Marcar una tarea como completada (o revertir su estado).
+
+Eliminar una tarea.
+
+La aplicación utiliza Angular Router para navegar entre la lista de tareas y el formulario de nueva tarea, y centraliza la lógica de negocio en un servicio inyectable.
+
+## Características
+
+- **Gestión de Tareas:**  
+  Crea, visualiza, actualiza (cambiando el estado) y elimina tareas.
+  
+- **Componentes Standalone:**  
+  Se aprovecha la nueva forma de declarar componentes sin necesidad de un NgModule raíz.
+
+- **Enrutamiento:**  
+  Navegación entre diferentes vistas (lista de tareas y formulario de nueva tarea).
+
+- **Interfaz Moderna:**  
+  Utiliza Tailwind CSS para un diseño atractivo y responsive, con un sidebar persistente y tarjetas (task cards) para cada tarea.
+
+### Arquitectura Utilizada
+
+Esta aplicación adopta una arquitectura modular y basada en **componentes standalone**, lo que ofrece varias ventajas:
+
+- **Componentes Standalone:**  
+  Permiten eliminar la necesidad de un NgModule raíz, simplificando la configuración y facilitando la reutilización, pruebas y mantenimiento de cada componente de forma independiente.
+
+- **Separación de Responsabilidades:**  
+  La lógica de negocio se centraliza en servicios (por ejemplo, `TaskService`), mientras que la presentación se maneja en componentes específicos ( `TasksListComponent`, `TaskFormComponent` y `TaskCardComponent`). Esto resulta en un código más limpio, organizado y escalable.
+
+- **Enrutamiento Centralizado:**  
+  La configuración de rutas en un archivo independiente (`app.routes.ts`) facilita la navegación entre vistas, manteniendo el código modular y fácil de extender a medida que crece la aplicación.
+
+- **Preparado para SSR y Hidratación:**  
+  La arquitectura permite soportar Angular Universal (SSR) y maneja la hidratación del lado del cliente, lo que mejora el rendimiento y la optimización para motores de búsqueda.
+
+  
+## Instalación
+
+**Requisitos**
+- Node.js (versión 14 o superior; se recomienda la última LTS)
+- npm
+
+## Pasos de Instalación
+
+1. Clonar el repositorio
 ```bash
-ng serve
+ [ git clone https://github.com/tuusuario/my-tasks-app.git](https://github.com/karen13hb/task/)
+  cd my-tasks-app
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Instalar las dependencias
 ```bash
-ng generate component component-name
+npm install
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
 ## Building
 
 To build the project run:
@@ -34,26 +68,12 @@ To build the project run:
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
 ## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+Licencia
+Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
